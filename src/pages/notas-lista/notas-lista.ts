@@ -53,7 +53,7 @@ export class NotasListaPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad NotasListaPage');
-    console.log( this.obj )
+    //console.log( this.obj )
   }
 
   getNotas( data, index ){
