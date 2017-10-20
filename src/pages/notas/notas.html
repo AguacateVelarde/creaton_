@@ -1,0 +1,119 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Publicación</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+<ion-grid>
+  <ion-row>
+    <ion-col style="text-align: center;">
+      <h1>{{ obj.titulo }}</h1>
+      <ion-item >
+        <ion-badge item-end>En {{ categoryData }}</ion-badge>
+      </ion-item>
+
+      <br>
+      <img [src]="'https://firebasestorage.googleapis.com/v0/b/paso-app-com.appspot.com/o/'+obj.header+'?alt=media'">
+    </ion-col>
+
+  </ion-row>
+
+
+  <ion-row  center class="vertical-align-content">
+    <ion-col *ngFor="let img of obj.images" >
+      <img [src]="'https://firebasestorage.googleapis.com/v0/b/paso-app-com.appspot.com/o/'+img.ruta+'?alt=media'">
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col style="text-align: justify;">
+      <p>{{ obj.cuerpo }}</p>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<div #map="" id="map"></div>
+
+
+<ion-item style="background: #fde0dd;">
+  <ion-grid>
+
+    <ion-row>
+      <ion-col style="text-align: center;">
+        <h1> ¡Atrévete a votar! </h1>
+      </ion-col>
+      <ion-col style="text-align: center;">
+        <button light [outline]="cont < 1" ion-button (click)="cont !=1 ? cont = 1 : cont = 0">
+          <ion-icon  name="ios-checkbox-outline"></ion-icon>
+        </button>
+        <button light [outline]="cont < 2" ion-button (click)="cont=2">
+          <ion-icon  name="ios-checkbox-outline"></ion-icon>
+        </button>
+        <button light [outline]="cont < 3" ion-button (click)="cont=3">
+          <ion-icon  name="ios-checkbox-outline"></ion-icon>
+        </button>
+        <button light [outline]="cont < 4" ion-button (click)="cont=4">
+          <ion-icon  name="ios-checkbox-outline"></ion-icon>
+        </button>
+        <button light [outline]="cont < 5" ion-button (click)="cont=5">
+          <ion-icon  name="ios-checkbox-outline"></ion-icon>
+        </button>
+      </ion-col>
+      <ion-col style="text-align: center;">
+        <button ion-button outline round (click)="votar( cont )" > Vota </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-item>
+
+
+
+<ion-item style="background: #f768a1;">
+  <ion-icon name="md-people" item-start></ion-icon>
+  Participaciones
+  <ion-badge item-end>{{ obj.cont_user }}</ion-badge>
+</ion-item>
+<ion-item style="background: #f768a1;">
+  <ion-icon name="ios-happy" item-start></ion-icon>
+  Promedio de Votos
+  <ion-badge item-end>{{ promedio( obj.cont, obj.cont_user ) | number:'1.2-2' }}</ion-badge>
+</ion-item>
+
+<br><br>
+
+
+<ion-card style="background: #fff7f3;"  >
+  <ion-grid no-margin>
+    <ion-row justify-content-start *ngFor="let dir of obj.comment">
+        <ion-col col-2>
+          <img style="border-radius: 50%;" src="assets/imgs/user.png" alt="">
+        </ion-col>
+        <ion-col style="text-align: justify;">
+          <strong> {{ dir.nombre }} </strong> <span style="color: gray;  font-style: italic; font-size: 10px;">2017-10-01</span><br>
+          {{ dir.comentario }}
+        </ion-col>
+        <div class="hr"> </div>
+    </ion-row>
+
+  </ion-grid>
+
+  <form (ngSubmit)="pushComment()">
+
+       <ion-item>
+         <ion-label>Comenta algo</ion-label>
+         <ion-textarea [(ngModel)]="todo.comentario" name="description"></ion-textarea>
+       </ion-item>
+       <br>
+       <button ion-button type="submit" justify-content-center outline >Agregar comentario</button>
+     </form>
+<br>
+</ion-card>
+
+
+</ion-content>
