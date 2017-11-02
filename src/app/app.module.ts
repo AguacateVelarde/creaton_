@@ -34,12 +34,12 @@ import { Observable } from 'rxjs/Observable';
 
 
 export const config = {
-    apiKey: "AIzaSyCCJw5lANEIyHWCwO3AAxwQiVbYZB7OVd0",
-    authDomain: "paso-app-com.firebaseapp.com",
-    databaseURL: "https://paso-app-com.firebaseio.com",
-    projectId: "paso-app-com",
-    storageBucket: "paso-app-com.appspot.com",
-    messagingSenderId: "701565952208"
+    apiKey: "**",
+    authDomain: "**",
+    databaseURL: "**",
+    projectId: "**",
+    storageBucket: "**",
+    messagingSenderId: "**"
   };
 
 
